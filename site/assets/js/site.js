@@ -28,7 +28,6 @@
     });
   };
   var norm = function (s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim(); };
-  var RATIO = { '9:16': 'r916', '4:5': 'r45', '1:1': 'r11', '16:9': 'r169' };
   var ARROW = '<svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>';
   var ARROW_SM = '<svg class="ar" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>';
 
@@ -97,9 +96,8 @@
     var half = [];
     while (half.length < 8) half = half.concat(list);
     var make = function (dup) {
-      return half.map(function (w, i) {
-        var cls = 'tile ' + (RATIO[w.proporcao] || 'r916') + ' off' + ((i + shift) % 4);
-        return '<div class="' + cls + '"' + (dup ? ' aria-hidden="true"' : '') + '>' + media(w, dup, true) + '</div>';
+      return half.map(function (w) {
+        return '<div class="tile r916"' + (dup ? ' aria-hidden="true"' : '') + '>' + media(w, dup) + '</div>';
       }).join('');
     };
     return make(false) + make(true);

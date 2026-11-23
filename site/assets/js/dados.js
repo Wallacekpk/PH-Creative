@@ -25,13 +25,13 @@
         arquivo: caminho do MP4. Exemplo: 'videos/transportadora.mp4'
         poster: imagem de capa (opcional)
         estilo: igual ao nome de um item de ESTILOS
-        titulo, duracao
-        proporcao: '9:16', '4:5', '1:1' ou '16:9'
+        titulo, duracao (aparecem ao passar o mouse)
+      Todas as molduras são verticais (9:16). Use vídeos verticais.
       Com arquivo preenchido, o item toca sozinho na galeria e abre com
       som ao clicar. A galeria duplica os itens para o movimento infinito.
 
    As 24 molduras abaixo estão VAZIAS, esperando os vídeos reais.
-   Cada uma já tem estilo e proporção. Para preencher, coloque o
+   São 3 por estilo, todas verticais, e cada uma já tem o seu estilo. Para preencher, coloque o
    caminho do MP4 em arquivo e, se quiser, uma imagem de capa em poster.
    Moldura sem arquivo e sem poster aparece vazia na página.
    ================================================================== */
@@ -50,30 +50,30 @@ window.PH_DADOS = {
   },
 
   VIDEO_WORKS: [
-    { id: 'trabalho-01', arquivo: '', poster: '', estilo: 'HardCopy', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-02', arquivo: '', poster: '', estilo: 'UGC', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-03', arquivo: '', poster: '', estilo: 'Cinematográfico', titulo: '', duracao: '', proporcao: '16:9' },
-    { id: 'trabalho-04', arquivo: '', poster: '', estilo: 'Reels nativo', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-05', arquivo: '', poster: '', estilo: 'Motion', titulo: '', duracao: '', proporcao: '1:1' },
-    { id: 'trabalho-06', arquivo: '', poster: '', estilo: 'Avatar de IA', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-07', arquivo: '', poster: '', estilo: 'Hard Motion', titulo: '', duracao: '', proporcao: '4:5' },
-    { id: 'trabalho-08', arquivo: '', poster: '', estilo: 'UGC', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-09', arquivo: '', poster: '', estilo: 'VSL', titulo: '', duracao: '', proporcao: '16:9' },
-    { id: 'trabalho-10', arquivo: '', poster: '', estilo: 'HardCopy', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-11', arquivo: '', poster: '', estilo: 'Cinematográfico', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-12', arquivo: '', poster: '', estilo: 'Reels nativo', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-13', arquivo: '', poster: '', estilo: 'Motion', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-14', arquivo: '', poster: '', estilo: 'Avatar de IA', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-15', arquivo: '', poster: '', estilo: 'Hard Motion', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-16', arquivo: '', poster: '', estilo: 'UGC', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-17', arquivo: '', poster: '', estilo: 'VSL', titulo: '', duracao: '', proporcao: '16:9' },
-    { id: 'trabalho-18', arquivo: '', poster: '', estilo: 'HardCopy', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-19', arquivo: '', poster: '', estilo: 'Cinematográfico', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-20', arquivo: '', poster: '', estilo: 'Reels nativo', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-21', arquivo: '', poster: '', estilo: 'Motion', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-22', arquivo: '', poster: '', estilo: 'Avatar de IA', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-23', arquivo: '', poster: '', estilo: 'Hard Motion', titulo: '', duracao: '', proporcao: '9:16' },
-    { id: 'trabalho-24', arquivo: '', poster: '', estilo: 'VSL', titulo: '', duracao: '', proporcao: '16:9' }
+    { id: 'trabalho-01', arquivo: '', poster: '', estilo: 'Reels nativo', titulo: '', duracao: '' },
+    { id: 'trabalho-02', arquivo: '', poster: '', estilo: 'Motion', titulo: '', duracao: '' },
+    { id: 'trabalho-03', arquivo: '', poster: '', estilo: 'UGC', titulo: '', duracao: '' },
+    { id: 'trabalho-04', arquivo: '', poster: '', estilo: 'Avatar de IA', titulo: '', duracao: '' },
+    { id: 'trabalho-05', arquivo: '', poster: '', estilo: 'HardCopy', titulo: '', duracao: '' },
+    { id: 'trabalho-06', arquivo: '', poster: '', estilo: 'Cinematográfico', titulo: '', duracao: '' },
+    { id: 'trabalho-07', arquivo: '', poster: '', estilo: 'Hard Motion', titulo: '', duracao: '' },
+    { id: 'trabalho-08', arquivo: '', poster: '', estilo: 'VSL', titulo: '', duracao: '' },
+    { id: 'trabalho-09', arquivo: '', poster: '', estilo: 'Motion', titulo: '', duracao: '' },
+    { id: 'trabalho-10', arquivo: '', poster: '', estilo: 'Reels nativo', titulo: '', duracao: '' },
+    { id: 'trabalho-11', arquivo: '', poster: '', estilo: 'Avatar de IA', titulo: '', duracao: '' },
+    { id: 'trabalho-12', arquivo: '', poster: '', estilo: 'UGC', titulo: '', duracao: '' },
+    { id: 'trabalho-13', arquivo: '', poster: '', estilo: 'Cinematográfico', titulo: '', duracao: '' },
+    { id: 'trabalho-14', arquivo: '', poster: '', estilo: 'HardCopy', titulo: '', duracao: '' },
+    { id: 'trabalho-15', arquivo: '', poster: '', estilo: 'VSL', titulo: '', duracao: '' },
+    { id: 'trabalho-16', arquivo: '', poster: '', estilo: 'Hard Motion', titulo: '', duracao: '' },
+    { id: 'trabalho-17', arquivo: '', poster: '', estilo: 'Reels nativo', titulo: '', duracao: '' },
+    { id: 'trabalho-18', arquivo: '', poster: '', estilo: 'Motion', titulo: '', duracao: '' },
+    { id: 'trabalho-19', arquivo: '', poster: '', estilo: 'UGC', titulo: '', duracao: '' },
+    { id: 'trabalho-20', arquivo: '', poster: '', estilo: 'Avatar de IA', titulo: '', duracao: '' },
+    { id: 'trabalho-21', arquivo: '', poster: '', estilo: 'HardCopy', titulo: '', duracao: '' },
+    { id: 'trabalho-22', arquivo: '', poster: '', estilo: 'Cinematográfico', titulo: '', duracao: '' },
+    { id: 'trabalho-23', arquivo: '', poster: '', estilo: 'Hard Motion', titulo: '', duracao: '' },
+    { id: 'trabalho-24', arquivo: '', poster: '', estilo: 'VSL', titulo: '', duracao: '' }
   ],
 
   /* Preços e prazos: troque os [R$ 00] e [PRAZO] pelos valores reais.

@@ -114,7 +114,7 @@ a{color:#00ff81}a:hover{color:#00d16e}
 .wall{position:relative;overflow:hidden;padding:24px 0 40px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%)}
 .wall-row{display:flex;align-items:flex-start;width:max-content;will-change:transform}
 .row-a{animation:mq 95s linear infinite}
-.row-b{animation:mq 120s linear infinite reverse;margin-top:6px}
+.row-b{animation:mq 120s linear infinite reverse;margin-top:22px}
 .wall:hover .wall-row,.wall:focus-within .wall-row{animation-play-state:paused}
 .is-static .wall-row{animation:none}
 @keyframes mq{to{transform:translateX(-50%)}}
