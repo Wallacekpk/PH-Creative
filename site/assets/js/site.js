@@ -290,11 +290,11 @@
     var all = $$('.modal');
     all.forEach(function (m) {
       $$('video', m).forEach(unload);
+      try { if (m.open && m.close) m.close(); } catch (e) {}
       if (m.parentNode) m.parentNode.removeChild(m);
     });
     modalEl = null;
     if (swapping) return;
-    root.inert = false;
     document.documentElement.classList.remove('is-locked');
     if (all.length && lastFocus && lastFocus.focus) lastFocus.focus();
   }
@@ -307,10 +307,11 @@
     /* nenhum outro vídeo com som continua tocando */
     $$('video').forEach(function (v) { if (!v.muted && !v.paused) v.pause(); });
     var info = [w.estilo, w.duracao].filter(Boolean).join(' · ');
-    modalEl = document.createElement('div');
+    /* <dialog> com showModal(): o navegador desenha o player numa camada acima de toda a página */
+    var nativo = typeof HTMLDialogElement === 'function';
+    modalEl = document.createElement(nativo ? 'dialog' : 'div');
     modalEl.className = 'modal';
-    modalEl.setAttribute('role', 'dialog');
-    modalEl.setAttribute('aria-modal', 'true');
+    if (!nativo) { modalEl.setAttribute('role', 'dialog'); modalEl.setAttribute('aria-modal', 'true'); }
     modalEl.setAttribute('aria-label', 'Vídeo: ' + (w.titulo || w.estilo || ''));
     modalEl.innerHTML =
       '<button type="button" class="modal-bg" aria-label="Fechar o vídeo" tabindex="-1"></button>' +
@@ -320,7 +321,10 @@
       '<div class="modal-cap"><b>' + esc(w.titulo || w.estilo) + '</b><span>' + esc(w.titulo ? info : (w.duracao || '')) + '</span></div></div>';
     document.body.appendChild(modalEl);
     /* a página por trás fica bloqueada para clique e teclado enquanto o vídeo está aberto */
-    root.inert = true;
+    if (nativo) {
+      modalEl.addEventListener('cancel', function (ev) { ev.preventDefault(); closeModal(); });
+      try { modalEl.showModal(); } catch (e) { modalEl.setAttribute('open', ''); }
+    }
     document.documentElement.classList.add('is-locked');
     $('.modal-bg', modalEl).addEventListener('click', function () { closeModal(); });
     $('.modal-x', modalEl).addEventListener('click', function () { closeModal(); });
