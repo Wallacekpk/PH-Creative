@@ -240,46 +240,43 @@
     document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && !menu.hidden) setMenu(false); });
   }
 
-  /* ---------- vídeo de fundo (hero e contato) ---------- */
-  var heroSrc = (small && HERO_VIDEO.arquivoMobile) ? HERO_VIDEO.arquivoMobile : HERO_VIDEO.arquivo;
+  /* ---------- vídeos de fundo (topo e contato) ---------- */
+  /* no celular usa as versões em 3:4 (arquivoMobile / posterMobile) quando existem */
+  var CONTATO_VIDEO = D.CONTATO_VIDEO || {};
+  var pick = function (cfg, key) { return (small && cfg[key + 'Mobile']) ? cfg[key + 'Mobile'] : (cfg[key] || ''); };
+  var heroSrc = pick(HERO_VIDEO, 'arquivo'), heroPoster = pick(HERO_VIDEO, 'poster');
+  var endSrc = pick(CONTATO_VIDEO, 'arquivo') || heroSrc;
+  var endPosterSrc = pick(CONTATO_VIDEO, 'poster') || heroPoster;
   var heroMedia = $('.hero-media'), endBox = $('#contato');
-  function endPoster() {
-    if (!endBox || !HERO_VIDEO.poster || $('.end-media', endBox)) return;
+  var canPlay = !saveData && !reduce;
+  function endMedia(withVideo) {
+    if (!endBox || $('.end-media', endBox)) return;
     var d = document.createElement('div');
     d.className = 'end-media';
     d.setAttribute('aria-hidden', 'true');
-    d.innerHTML = '<img src="' + esc(HERO_VIDEO.poster) + '" alt="" loading="lazy">';
+    var still = endPosterSrc ? '<img src="' + esc(endPosterSrc) + '" alt="" loading="lazy">' : '';
+    if (withVideo && endSrc) {
+      d.innerHTML = '<video data-autoplay="1" src="' + esc(endSrc) + '"' + (endPosterSrc ? ' poster="' + esc(endPosterSrc) + '"' : '') +
+        ' muted loop playsinline preload="none"></video>';
+      $('video', d).addEventListener('error', function () { d.innerHTML = still; });
+    } else {
+      d.innerHTML = still;
+    }
     endBox.insertBefore(d, endBox.firstChild);
   }
-  var poster = $('.hero-poster');
-  if (poster) {
-    if (HERO_VIDEO.poster) poster.src = HERO_VIDEO.poster;
-    else poster.parentNode.removeChild(poster);
-  }
-  if (heroSrc && !saveData && !reduce && heroMedia) {
+  if (heroSrc && canPlay && heroMedia) {
     var v = document.createElement('video');
     v.className = 'hero-video';
     v.setAttribute('data-autoplay', '1');
     v.muted = true; v.loop = true; v.playsInline = true;
     v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
     v.preload = 'auto';
-    if (HERO_VIDEO.poster) v.poster = HERO_VIDEO.poster;
+    if (heroPoster) v.poster = heroPoster;
     v.src = heroSrc;
     heroMedia.appendChild(v);
-    var ev = document.createElement('div');
-    ev.className = 'end-media';
-    ev.setAttribute('aria-hidden', 'true');
-    ev.innerHTML = '<video data-autoplay="1" src="' + esc(heroSrc) + '"' + (HERO_VIDEO.poster ? ' poster="' + esc(HERO_VIDEO.poster) + '"' : '') +
-      ' muted loop playsinline preload="none"></video>';
-    if (endBox) endBox.insertBefore(ev, endBox.firstChild);
-    v.addEventListener('error', function () {
-      if (v.parentNode) v.parentNode.removeChild(v);
-      if (ev.parentNode) ev.parentNode.removeChild(ev);
-      endPoster();
-    });
-  } else {
-    endPoster();
+    v.addEventListener('error', function () { if (v.parentNode) v.parentNode.removeChild(v); });
   }
+  endMedia(canPlay);
 
   /* ---------- player com som: um vídeo por vez ---------- */
   var lastFocus = null, modalEl = null;

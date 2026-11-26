@@ -7,13 +7,11 @@
       Número com DDI e DDD, só dígitos. Exemplo: 5511999999999.
       Todos os botões da página usam este número.
 
-   2) HERO_VIDEO (vídeo de fundo da primeira dobra)
-      arquivo: endereço do MP4 em 1920 x 1080. Pode ser um arquivo da pasta
-               videos/ (exemplo: 'videos/hero.mp4') ou um link https.
-               Hoje aponta para o vídeo gerado no Higgsfield, hospedado lá.
-      arquivoMobile: versão menor para celular (opcional, 1280 x 720)
-      poster: imagem mostrada enquanto o vídeo carrega
-      Vazio, a página mostra só a imagem do poster.
+   2) HERO_VIDEO e CONTATO_VIDEO (vídeos de fundo do topo e do contato)
+      arquivo / poster: versão do computador (16:9, 1920 x 1080)
+      arquivoMobile / posterMobile: versão do celular (3:4, 720 x 960)
+      Pode ser um arquivo da pasta videos/ ou um link https. Hoje os vídeos
+      ficam hospedados no Higgsfield. Sem vídeo, aparece só a imagem.
 
    3) VIDEO_WORKS (galeria de trabalhos, em grade de 4 colunas)
       Para adicionar um vídeo:
@@ -44,8 +42,17 @@ window.PH_DADOS = {
 
   HERO_VIDEO: {
     arquivo: 'https://d2ol7oe51mr4n9.cloudfront.net/user_326iI80Rr18THZM0oooLK3Jst4g/d8b40d7a-f598-40f5-a39c-9c5139f723f1.mp4',
-    arquivoMobile: 'https://d2ol7oe51mr4n9.cloudfront.net/user_326iI80Rr18THZM0oooLK3Jst4g/59df7a5e-9e2c-4cd9-9cd3-f4a6512072b0.mp4',
-    poster: 'assets/img/hero-poster.jpg'
+    poster: 'assets/img/hero-poster.jpg',
+    arquivoMobile: 'https://d2ol7oe51mr4n9.cloudfront.net/user_326iI80Rr18THZM0oooLK3Jst4g/f618d7b9-90fb-4ebb-b875-4aed7c74da7f.mp4',
+    posterMobile: 'assets/img/hero-poster-mobile.jpg'
+  },
+
+  /* fundo da seção de contato: no computador usa o mesmo vídeo do topo */
+  CONTATO_VIDEO: {
+    arquivo: 'https://d2ol7oe51mr4n9.cloudfront.net/user_326iI80Rr18THZM0oooLK3Jst4g/d8b40d7a-f598-40f5-a39c-9c5139f723f1.mp4',
+    poster: 'assets/img/hero-poster.jpg',
+    arquivoMobile: 'https://d2ol7oe51mr4n9.cloudfront.net/user_326iI80Rr18THZM0oooLK3Jst4g/da0a9a10-2e44-4034-bd9d-0fdbe3f09433.mp4',
+    posterMobile: 'assets/img/contato-poster-mobile.jpg'
   },
 
   VIDEO_WORKS: [

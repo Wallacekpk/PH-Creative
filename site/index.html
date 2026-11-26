@@ -17,7 +17,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
-<link rel="preload" as="image" href="assets/img/hero-poster.jpg">
+<link rel="preload" as="image" href="assets/img/hero-poster.jpg" media="(min-width: 761px)">
+<link rel="preload" as="image" href="assets/img/hero-poster-mobile.jpg" media="(max-width: 760px)">
 <link rel="stylesheet" href="assets/css/site.css">
 <script>document.documentElement.className += ' js';</script>
 </head>
@@ -37,24 +38,16 @@
 <div class="nav-right">
 <span class="nav-tc" aria-hidden="true">TC <span>00:00</span> / 00:52</span>
 <a class="btn btn-primary btn-sm" href="#contato" data-wa target="_blank" rel="noopener">Pedir orçamento</a>
-<button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu-mobile">Menu</button>
 </div>
 <span class="nav-prog" aria-hidden="true"></span>
 </header>
-<nav id="menu-mobile" class="menu-panel" aria-label="Menu" hidden>
-<a href="#trabalhos">Trabalhos</a>
-<a href="#estilos">Estilos</a>
-<a href="#precos">Preços</a>
-<a href="#duvidas">Dúvidas</a>
-<a href="#contato">Contato</a>
-</nav>
 
 <main>
 
 <section id="inicio" class="hero" aria-label="Abertura">
 <div class="hero-media" aria-hidden="true">
 <div class="hero-fallback"></div>
-<img class="hero-poster" src="assets/img/hero-poster.jpg" alt="">
+<picture><source media="(max-width: 760px)" srcset="assets/img/hero-poster-mobile.jpg"><img class="hero-poster" src="assets/img/hero-poster.jpg" alt=""></picture>
 </div>
 <div class="hero-shade" aria-hidden="true"></div>
 <div class="hero-glow" aria-hidden="true"></div>
@@ -63,11 +56,6 @@
 <span class="spark s3" aria-hidden="true"></span>
 <svg class="grain" aria-hidden="true"><filter id="grainHero"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"></feTurbulence></filter><rect width="100%" height="100%" filter="url(#grainHero)"></rect></svg>
 
-<div class="hero-top">
-<div class="wrap">
-<span class="rec fu d1"><i aria-hidden="true"></i>00:00 · Produtora de criativos em vídeo</span>
-</div>
-</div>
 
 <div class="wrap hero-inner">
 <h1 class="display hero-title">
@@ -76,7 +64,6 @@
 <span class="ln"><span><em class="framed">72 horas</em>.</span></span>
 </h1>
 <div class="hero-side">
-<span class="selo fu d1"><i aria-hidden="true"></i>Próxima janela de produção: [DATA]</span>
 <p class="lead fu d2" style="color: #d6d8db">Roteiro, narração e edição feitos pela mesma equipe. Você manda o produto e recebe o anúncio pronto para subir.</p>
 <div class="fu d3" style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px">
 <a class="btn btn-primary" href="#contato" data-wa target="_blank" rel="noopener">Pedir orçamento no WhatsApp<svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
