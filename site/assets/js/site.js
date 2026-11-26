@@ -90,28 +90,12 @@
       (w.titulo ? '<span class="mid">' + esc(w.titulo) + '</span>' : '<span class="mid"></span>') + '</div>';
   }
 
-  /* ---------- galeria em movimento infinito ---------- */
-  function track(list, shift) {
-    if (!list.length) return '';
-    var half = [];
-    while (half.length < 8) half = half.concat(list);
-    var make = function (dup) {
-      return half.map(function (w) {
-        return '<div class="tile r916"' + (dup ? ' aria-hidden="true"' : '') + '>' + media(w, dup) + '</div>';
-      }).join('');
-    };
-    return make(false) + make(true);
-  }
-  var listA = works, listB = [];
-  if (works.length >= 6) {
-    listA = works.filter(function (w, i) { return i % 2 === 0; });
-    listB = works.filter(function (w, i) { return i % 2 === 1; });
-  }
-  var rowA = $('#rowA'), rowB = $('#rowB');
-  if (rowA) rowA.innerHTML = track(listA, 0);
-  if (rowB) {
-    if (listB.length) rowB.innerHTML = track(listB, 2);
-    else rowB.parentNode.removeChild(rowB);
+  /* ---------- galeria: grade com os vídeos do portfólio ---------- */
+  var grid = $('#worksGrid');
+  if (grid) {
+    grid.innerHTML = works.map(function (w) {
+      return '<div class="tile r916">' + media(w, false) + '</div>';
+    }).join('');
   }
 
   /* ---------- estilos ---------- */
@@ -344,7 +328,7 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 
   /* ---------- começar ---------- */
-  if (D.ANIMAR_FILEIRA === false || reduce) root.classList.add('is-static');
+  if (reduce) root.classList.add('is-static');
   scan(root);
   onScroll();
   requestAnimationFrame(function () {

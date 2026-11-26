@@ -15,7 +15,7 @@
       poster: imagem mostrada enquanto o vídeo carrega
       Vazio, a página mostra só a imagem do poster.
 
-   3) VIDEO_WORKS (galeria de trabalhos)
+   3) VIDEO_WORKS (galeria de trabalhos, em grade de 4 colunas)
       Para adicionar um vídeo:
         a) crie a pasta videos/ ao lado do index.html e coloque o MP4 nela
         b) copie uma linha da lista e troque os campos
@@ -27,11 +27,12 @@
         estilo: igual ao nome de um item de ESTILOS
         titulo, duracao (aparecem ao passar o mouse)
       Todas as molduras são verticais (9:16). Use vídeos verticais.
-      Com arquivo preenchido, o item toca sozinho na galeria e abre com
-      som ao clicar. A galeria duplica os itens para o movimento infinito.
+      Com arquivo preenchido, o vídeo toca sem som quando aparece na tela e
+      abre com som ao clicar. O ideal são 4 vídeos (uma fileira).
 
-   As 24 molduras abaixo estão VAZIAS, esperando os vídeos reais.
-   São 3 por estilo, todas verticais, e cada uma já tem o seu estilo. Para preencher, coloque o
+   As 4 molduras abaixo estão VAZIAS, esperando os vídeos reais.
+   Todas são verticais. O estilo de cada uma é provisório: troque pelo
+   estilo do vídeo que entrar nela. Para preencher, coloque o
    caminho do MP4 em arquivo e, se quiser, uma imagem de capa em poster.
    Moldura sem arquivo e sem poster aparece vazia na página.
    ================================================================== */
@@ -40,9 +41,6 @@ window.PH_DADOS = {
 
   WHATSAPP: '5500000000000',
 
-  /* false deixa as fileiras da galeria paradas */
-  ANIMAR_FILEIRA: true,
-
   HERO_VIDEO: {
     arquivo: 'https://d2ol7oe51mr4n9.cloudfront.net/user_326iI80Rr18THZM0oooLK3Jst4g/d8b40d7a-f598-40f5-a39c-9c5139f723f1.mp4',
     arquivoMobile: 'https://d2ol7oe51mr4n9.cloudfront.net/user_326iI80Rr18THZM0oooLK3Jst4g/59df7a5e-9e2c-4cd9-9cd3-f4a6512072b0.mp4',
@@ -50,30 +48,10 @@ window.PH_DADOS = {
   },
 
   VIDEO_WORKS: [
-    { id: 'trabalho-01', arquivo: '', poster: '', estilo: 'Reels nativo', titulo: '', duracao: '' },
-    { id: 'trabalho-02', arquivo: '', poster: '', estilo: 'Motion', titulo: '', duracao: '' },
-    { id: 'trabalho-03', arquivo: '', poster: '', estilo: 'UGC', titulo: '', duracao: '' },
-    { id: 'trabalho-04', arquivo: '', poster: '', estilo: 'Avatar de IA', titulo: '', duracao: '' },
-    { id: 'trabalho-05', arquivo: '', poster: '', estilo: 'HardCopy', titulo: '', duracao: '' },
-    { id: 'trabalho-06', arquivo: '', poster: '', estilo: 'Cinematográfico', titulo: '', duracao: '' },
-    { id: 'trabalho-07', arquivo: '', poster: '', estilo: 'Hard Motion', titulo: '', duracao: '' },
-    { id: 'trabalho-08', arquivo: '', poster: '', estilo: 'VSL', titulo: '', duracao: '' },
-    { id: 'trabalho-09', arquivo: '', poster: '', estilo: 'Motion', titulo: '', duracao: '' },
-    { id: 'trabalho-10', arquivo: '', poster: '', estilo: 'Reels nativo', titulo: '', duracao: '' },
-    { id: 'trabalho-11', arquivo: '', poster: '', estilo: 'Avatar de IA', titulo: '', duracao: '' },
-    { id: 'trabalho-12', arquivo: '', poster: '', estilo: 'UGC', titulo: '', duracao: '' },
-    { id: 'trabalho-13', arquivo: '', poster: '', estilo: 'Cinematográfico', titulo: '', duracao: '' },
-    { id: 'trabalho-14', arquivo: '', poster: '', estilo: 'HardCopy', titulo: '', duracao: '' },
-    { id: 'trabalho-15', arquivo: '', poster: '', estilo: 'VSL', titulo: '', duracao: '' },
-    { id: 'trabalho-16', arquivo: '', poster: '', estilo: 'Hard Motion', titulo: '', duracao: '' },
-    { id: 'trabalho-17', arquivo: '', poster: '', estilo: 'Reels nativo', titulo: '', duracao: '' },
-    { id: 'trabalho-18', arquivo: '', poster: '', estilo: 'Motion', titulo: '', duracao: '' },
-    { id: 'trabalho-19', arquivo: '', poster: '', estilo: 'UGC', titulo: '', duracao: '' },
-    { id: 'trabalho-20', arquivo: '', poster: '', estilo: 'Avatar de IA', titulo: '', duracao: '' },
-    { id: 'trabalho-21', arquivo: '', poster: '', estilo: 'HardCopy', titulo: '', duracao: '' },
-    { id: 'trabalho-22', arquivo: '', poster: '', estilo: 'Cinematográfico', titulo: '', duracao: '' },
-    { id: 'trabalho-23', arquivo: '', poster: '', estilo: 'Hard Motion', titulo: '', duracao: '' },
-    { id: 'trabalho-24', arquivo: '', poster: '', estilo: 'VSL', titulo: '', duracao: '' }
+    { id: 'trabalho-01', arquivo: '', poster: '', estilo: 'HardCopy', titulo: '', duracao: '' },
+    { id: 'trabalho-02', arquivo: '', poster: '', estilo: 'UGC', titulo: '', duracao: '' },
+    { id: 'trabalho-03', arquivo: '', poster: '', estilo: 'Motion', titulo: '', duracao: '' },
+    { id: 'trabalho-04', arquivo: '', poster: '', estilo: 'Cinematográfico', titulo: '', duracao: '' }
   ],
 
   /* Preços e prazos: troque os [R$ 00] e [PRAZO] pelos valores reais.

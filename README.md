@@ -8,7 +8,7 @@ Quase tudo se edita em `site/assets/js/dados.js`:
 
 - `WHATSAPP`: número com DDI e DDD, só dígitos.
 - `HERO_VIDEO`: vídeo de fundo da primeira dobra (desktop e celular).
-- `VIDEO_WORKS`: as molduras da galeria, todas verticais (9:16), 3 por estilo. Cada linha é uma moldura com o seu estilo. Preencha `arquivo` com o caminho do MP4 (ex.: `videos/hardcopy-transportadora.mp4`) e, se quiser, `poster` com uma imagem de capa.
+- `VIDEO_WORKS`: os 4 vídeos da galeria do portfólio, todos verticais (9:16). Cada linha é uma moldura com o seu estilo. Preencha `arquivo` com o caminho do MP4 (ex.: `videos/hardcopy-transportadora.mp4`) e, se quiser, `poster` com uma imagem de capa.
 - `ESTILOS`: nomes, descrições, preços e prazos de cada estilo.
 
 Textos fixos ficam em `site/index.html` e o visual em `site/assets/css/site.css`.

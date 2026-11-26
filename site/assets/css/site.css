@@ -484,3 +484,8 @@ html:not(.js) .ln > span{transform:none}
 .faq-q{grid-template-columns:34px minmax(0,1fr) 34px;padding:14px 14px}
 .faq-a p{padding:0 16px 20px 60px}
 }
+
+/* galeria do portfólio: grade fixa de vídeos verticais */
+.works-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;padding:8px 0 8px}
+.works-grid .tile,.works-grid .tile.r916{width:auto;margin:0}
+@media (max-width:860px){.works-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
