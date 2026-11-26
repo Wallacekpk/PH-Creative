@@ -281,22 +281,31 @@
     endPoster();
   }
 
-  /* ---------- player com som ---------- */
+  /* ---------- player com som: um vídeo por vez ---------- */
   var lastFocus = null, modalEl = null;
-  function closeModal() {
-    if (!modalEl) return;
-    var vid = $('video', modalEl);
-    if (vid) vid.pause();
-    modalEl.parentNode.removeChild(modalEl);
+  function unload(v) {
+    try { v.pause(); v.muted = true; v.removeAttribute('src'); v.load(); } catch (e) {}
+  }
+  function closeModal(swapping) {
+    var all = $$('.modal');
+    all.forEach(function (m) {
+      $$('video', m).forEach(unload);
+      if (m.parentNode) m.parentNode.removeChild(m);
+    });
     modalEl = null;
+    if (swapping) return;
+    root.inert = false;
     document.documentElement.classList.remove('is-locked');
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
+    if (all.length && lastFocus && lastFocus.focus) lastFocus.focus();
   }
   function openModal(id) {
     var w = byId[id];
     if (!w || !w.arquivo) return;
-    lastFocus = document.activeElement;
+    if ($$('.modal').length) closeModal(true);
+    else lastFocus = document.activeElement;
     setMenu(false);
+    /* nenhum outro vídeo com som continua tocando */
+    $$('video').forEach(function (v) { if (!v.muted && !v.paused) v.pause(); });
     var info = [w.estilo, w.duracao].filter(Boolean).join(' · ');
     modalEl = document.createElement('div');
     modalEl.className = 'modal';
@@ -307,19 +316,47 @@
       '<button type="button" class="modal-bg" aria-label="Fechar o vídeo" tabindex="-1"></button>' +
       '<div class="modal-card">' +
       '<button type="button" class="modal-x">Fechar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>' +
-      '<video src="' + esc(w.arquivo) + '"' + (w.poster ? ' poster="' + esc(w.poster) + '"' : '') + ' controls autoplay playsinline preload="auto"></video>' +
+      '<video src="' + esc(w.arquivo) + '"' + (w.poster ? ' poster="' + esc(w.poster) + '"' : '') + ' controls playsinline preload="auto" tabindex="0"></video>' +
       '<div class="modal-cap"><b>' + esc(w.titulo || w.estilo) + '</b><span>' + esc(w.titulo ? info : (w.duracao || '')) + '</span></div></div>';
     document.body.appendChild(modalEl);
+    /* a página por trás fica bloqueada para clique e teclado enquanto o vídeo está aberto */
+    root.inert = true;
     document.documentElement.classList.add('is-locked');
-    $('.modal-bg', modalEl).addEventListener('click', closeModal);
-    $('.modal-x', modalEl).addEventListener('click', closeModal);
-    $('.modal-x', modalEl).focus();
+    $('.modal-bg', modalEl).addEventListener('click', function () { closeModal(); });
+    $('.modal-x', modalEl).addEventListener('click', function () { closeModal(); });
+    var vid = $('video', modalEl);
+    vid.addEventListener('ended', function () { vid.currentTime = 0; });
+    vid.focus({ preventScroll: true });
+    var pr = vid.play();
+    if (pr && pr.catch) pr.catch(function () {});
   }
   document.addEventListener('click', function (ev) {
+    if (modalEl && modalEl.contains(ev.target)) return;
     var b = ev.target.closest && ev.target.closest('[data-open]');
-    if (b) openModal(b.getAttribute('data-open'));
+    if (b) { ev.preventDefault(); openModal(b.getAttribute('data-open')); }
   });
-  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', function (ev) {
+    if (!modalEl) return;
+    if (ev.key === 'Escape') { closeModal(); return; }
+    if (ev.key === 'Tab') {
+      var f = [$('video', modalEl), $('.modal-x', modalEl)];
+      var i = f.indexOf(document.activeElement);
+      ev.preventDefault();
+      f[(i + (ev.shiftKey ? f.length - 1 : 1)) % f.length].focus();
+    }
+  });
+  /* regra geral: só um vídeo com som por vez; prévias e fundos sempre sem som */
+  document.addEventListener('play', function (ev) {
+    var v = ev.target;
+    if (!v || v.tagName !== 'VIDEO') return;
+    if (v.hasAttribute('data-autoplay')) { if (!v.muted) v.muted = true; return; }
+    $$('video').forEach(function (o) { if (o !== v && !o.paused && !o.hasAttribute('data-autoplay')) o.pause(); });
+  }, true);
+  document.addEventListener('volumechange', function (ev) {
+    var v = ev.target;
+    if (v && v.hasAttribute && v.hasAttribute('data-autoplay') && !v.muted) v.muted = true;
+  }, true);
+  window.addEventListener('pagehide', function () { closeModal(); });
 
   /* ---------- barra de progresso e timecode ---------- */
   var tcEl = $('.nav-tc span'), bar = $('.nav-prog'), raf = 0, lastTc = '';
