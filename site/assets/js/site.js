@@ -99,7 +99,8 @@
   }
 
   /* ---------- estilos ---------- */
-  var tab = Math.min(2, Math.max(0, ESTILOS.length - 1));
+  var tab = 0;
+  ESTILOS.forEach(function (e, i) { if (e.recomendado && !tab) tab = i; });
   var estList = $('#estList'), estPanel = $('#estPanel');
 
   function renderEstList() {

@@ -48,22 +48,28 @@ window.PH_DADOS = {
   },
 
   VIDEO_WORKS: [
-    { id: 'trabalho-01', arquivo: '', poster: '', estilo: 'HardCopy', titulo: '', duracao: '' },
-    { id: 'trabalho-02', arquivo: '', poster: '', estilo: 'UGC', titulo: '', duracao: '' },
-    { id: 'trabalho-03', arquivo: '', poster: '', estilo: 'Motion', titulo: '', duracao: '' },
+    { id: 'trabalho-01', arquivo: '', poster: '', estilo: 'Demonstrativo', titulo: '', duracao: '' },
+    { id: 'trabalho-02', arquivo: '', poster: '', estilo: 'IA', titulo: '', duracao: '' },
+    { id: 'trabalho-03', arquivo: '', poster: '', estilo: 'Magnético', titulo: '', duracao: '' },
     { id: 'trabalho-04', arquivo: '', poster: '', estilo: 'Cinematográfico', titulo: '', duracao: '' }
   ],
 
-  /* Preços e prazos: troque os [R$ 00] e [PRAZO] pelos valores reais.
-     recomendado: true destaca a linha na tabela de preços. */
+  /* Estilos: os mesmos nomes das pastas do portfólio da PH no Drive.
+     Preços e prazos: troque os [R$ 00] e [PRAZO] pelos valores reais.
+     recomendado: true destaca a linha na tabela de preços (opcional). */
   ESTILOS: [
-    { nome: 'Reels nativo', descricao: 'Corte a cada 1,5 segundo, legenda palavra por palavra e gancho nos 3 primeiros segundos. Feito para parar o dedo no feed.', ideal: 'Perfis que querem alcance e seguidor novo', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
-    { nome: 'UGC', descricao: 'Uma pessoa real falando com a câmera sobre o seu produto, do jeito que um cliente falaria. Pode ser alguém da sua equipe ou um modelo indicado pela PH.', ideal: 'E-commerce, beleza e suplementos', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
-    { nome: 'HardCopy', descricao: 'Texto grande na tela, corte seco e oferta direta. É o formato que mais aparece em campanha de conversão.', ideal: 'Tráfego pago com objetivo de venda', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]', recomendado: true },
-    { nome: 'Hard Motion', descricao: 'Copy direta com tipografia animada e transições marcadas. Ninguém precisa aparecer em cena.', ideal: 'Infoprodutos e lançamentos', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
-    { nome: 'Motion', descricao: 'Animação para explicar aplicativo, serviço ou produto que não dá para filmar.', ideal: 'SaaS, aplicativos e serviços', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
-    { nome: 'Avatar de IA', descricao: 'Apresentador criado com inteligência artificial, sem gravação e sem estúdio. Dá para testar várias versões do mesmo roteiro em pouco tempo.', ideal: 'Testar muitos ganchos com verba curta', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
+    { nome: 'Advogado', descricao: 'Criativos para advogados e escritórios de advocacia, com linguagem clara e que passa confiança para quem está procurando ajuda.', ideal: 'Advogados e escritórios', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
+    { nome: 'Demonstrativo', descricao: 'O produto aparece funcionando na tela, do problema ao resultado, para o cliente entender em poucos segundos por que precisa dele.', ideal: 'Produtos que vendem quando aparecem em uso', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
+    { nome: 'IA', descricao: 'Vídeos produzidos com inteligência artificial, sem gravação e sem estúdio. Dá para testar várias versões do mesmo roteiro em pouco tempo.', ideal: 'Testar muitos ganchos com verba curta', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
+    { nome: 'Elite', descricao: '[DESCRIÇÃO DO ESTILO ELITE]', ideal: '[IDEAL PARA]', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
+    { nome: 'TikTok Shop', descricao: 'Vídeos com a cara nativa do TikTok, pensados para vender o produto direto na loja do TikTok Shop.', ideal: 'Lojas que vendem pelo TikTok Shop', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
+    { nome: 'LATAM ES', descricao: 'Criativos em espanhol para anunciar em outros países da América Latina.', ideal: 'Campanhas em espanhol para a América Latina', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
+    { nome: 'Magnético', descricao: '[DESCRIÇÃO DO ESTILO MAGNÉTICO]', ideal: '[IDEAL PARA]', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
     { nome: 'Cinematográfico', descricao: 'Imagem com linguagem de filme, trilha escolhida a dedo e cor tratada. Para marcas que querem parecer premium no feed.', ideal: 'Marcas premium e institucional', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
-    { nome: 'VSL', descricao: 'Vídeo de vendas longo, do roteiro à edição final, para apresentar a oferta do começo ao fechamento.', ideal: 'Ofertas de ticket alto e páginas de venda', avulso: 'Sob consulta', pacote5: 'Sob consulta', pacote10: 'Sob consulta', prazo: '[PRAZO]' }
+    { nome: 'Imóveis', descricao: 'Vídeos para apresentar imóveis e lançamentos, com foco em gerar contato de quem está procurando onde morar ou investir.', ideal: 'Imobiliárias, corretores e lançamentos', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
+    { nome: 'Receitas', descricao: 'Criativos para produtos e infoprodutos de culinária, usando a própria receita como gancho.', ideal: 'Culinária e infoprodutos de receitas', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
+    { nome: 'Geral', descricao: '[DESCRIÇÃO DO ESTILO GERAL]', ideal: '[IDEAL PARA]', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
+    { nome: 'Encapsulados', descricao: 'Criativos para suplementos e produtos em cápsula, com copy direta e foco em conversão.', ideal: 'Suplementos e produtos em cápsula', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' },
+    { nome: 'Expert', descricao: 'Criativos para experts e infoprodutores divulgarem cursos, mentorias e lançamentos.', ideal: 'Experts e infoprodutores', avulso: '[R$ 00]', pacote5: '[R$ 00]', pacote10: '[R$ 00]', prazo: '[PRAZO]' }
   ]
 };
