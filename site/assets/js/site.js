@@ -28,6 +28,14 @@
     });
   };
   var norm = function (s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim(); };
+  var sing = function (s) { return norm(s).replace(/s$/, ''); };
+  /* liga o estilo do vídeo ao estilo da lista (ex.: Encapsulado e Encapsulados, Avatar de IA e IA) */
+  function sameStyle(a, b) {
+    var x = sing(a), y = sing(b);
+    if (!x || !y) return false;
+    if (x === y) return true;
+    return x.split(/\s+/).indexOf(y) > -1 || y.split(/\s+/).indexOf(x) > -1;
+  }
   var ARROW = '<svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>';
   var ARROW_SM = '<svg class="ar" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>';
 
@@ -76,9 +84,11 @@
       '<span class="v-title">' + esc(w.titulo) + '</span>';
     if (w.arquivo) {
       return '<button type="button" class="vbtn" data-open="' + esc(w.id) + '"' + (hidden ? ' tabindex="-1"' : '') +
-        ' aria-label="Assistir com som: ' + esc(w.titulo || 'trabalho') + ', estilo ' + esc(w.estilo) + '">' +
-        '<video data-autoplay="1" src="' + esc(w.arquivo) + '"' + (w.poster ? ' poster="' + esc(w.poster) + '"' : '') +
-        ' muted loop playsinline preload="none"></video>' + meta + '</button>';
+        ' aria-label="Assistir com som: ' + esc(w.titulo || ('vídeo ' + w.estilo)) + '">' +
+        '<video data-autoplay="1" src="' + esc(w.previa || w.arquivo) + '"' + (w.poster ? ' poster="' + esc(w.poster) + '"' : '') +
+        ' muted loop playsinline preload="none"></video>' +
+        '<span class="chip">' + esc(w.estilo) + '</span>' +
+        '<span class="v-sound"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"></path></svg><span class="t">Assistir com som' + (w.duracao ? ' · ' + esc(w.duracao) : '') + '</span></span></button>';
     }
     if (w.poster) {
       return '<div class="vbtn is-img"><img src="' + esc(w.poster) + '" alt="' +
@@ -116,7 +126,7 @@
   function renderEstPanel() {
     var e = ESTILOS[tab];
     if (!e) return;
-    var exemplos = works.filter(function (w) { return norm(w.estilo) === norm(e.nome); });
+    var exemplos = works.filter(function (w) { return sameStyle(w.estilo, e.nome); });
     var pos = ['m', 's1x', 's2x'];
     var frames = pos.map(function (p, k) {
       var w = exemplos[k] || { id: '', arquivo: '', estilo: e.nome, titulo: '', duracao: '' };
@@ -292,13 +302,13 @@
     modalEl.className = 'modal';
     modalEl.setAttribute('role', 'dialog');
     modalEl.setAttribute('aria-modal', 'true');
-    modalEl.setAttribute('aria-label', 'Vídeo: ' + (w.titulo || ''));
+    modalEl.setAttribute('aria-label', 'Vídeo: ' + (w.titulo || w.estilo || ''));
     modalEl.innerHTML =
       '<button type="button" class="modal-bg" aria-label="Fechar o vídeo" tabindex="-1"></button>' +
       '<div class="modal-card">' +
       '<button type="button" class="modal-x">Fechar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>' +
       '<video src="' + esc(w.arquivo) + '"' + (w.poster ? ' poster="' + esc(w.poster) + '"' : '') + ' controls autoplay playsinline preload="auto"></video>' +
-      '<div class="modal-cap"><b>' + esc(w.titulo) + '</b><span>' + esc(info) + '</span></div></div>';
+      '<div class="modal-cap"><b>' + esc(w.titulo || w.estilo) + '</b><span>' + esc(w.titulo ? info : (w.duracao || '')) + '</span></div></div>';
     document.body.appendChild(modalEl);
     document.documentElement.classList.add('is-locked');
     $('.modal-bg', modalEl).addEventListener('click', closeModal);

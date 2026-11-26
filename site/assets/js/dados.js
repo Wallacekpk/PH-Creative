@@ -22,7 +22,8 @@
         c) suba a pasta de novo na Netlify
       Campos:
         id: nome curto e único
-        arquivo: caminho do MP4. Exemplo: 'videos/transportadora.mp4'
+        arquivo: caminho do MP4 completo, com som. Exemplo: 'videos/elite.mp4'
+        previa: trecho curto e sem som que roda na grade (opcional)
         poster: imagem de capa (opcional)
         estilo: igual ao nome de um item de ESTILOS
         titulo, duracao (aparecem ao passar o mouse)
@@ -30,9 +31,9 @@
       Com arquivo preenchido, o vídeo toca sem som quando aparece na tela e
       abre com som ao clicar. O ideal são 4 vídeos (uma fileira).
 
-   As 4 molduras abaixo estão VAZIAS, esperando os vídeos reais.
-   Todas são verticais. O estilo de cada uma é provisório: troque pelo
-   estilo do vídeo que entrar nela. Para preencher, coloque o
+   A galeria tem 4 vídeos verticais da PH. Os arquivos ficam na pasta
+   videos/ e as capas em assets/img/trabalhos/. Para trocar um vídeo,
+   substitua os arquivos e atualize a linha dele aqui. Para preencher, coloque o
    caminho do MP4 em arquivo e, se quiser, uma imagem de capa em poster.
    Moldura sem arquivo e sem poster aparece vazia na página.
    ================================================================== */
@@ -48,10 +49,10 @@ window.PH_DADOS = {
   },
 
   VIDEO_WORKS: [
-    { id: 'trabalho-01', arquivo: '', poster: '', estilo: 'Demonstrativo', titulo: '', duracao: '' },
-    { id: 'trabalho-02', arquivo: '', poster: '', estilo: 'IA', titulo: '', duracao: '' },
-    { id: 'trabalho-03', arquivo: '', poster: '', estilo: 'Magnético', titulo: '', duracao: '' },
-    { id: 'trabalho-04', arquivo: '', poster: '', estilo: 'Cinematográfico', titulo: '', duracao: '' }
+    { id: 'elite', arquivo: 'videos/elite.mp4', previa: 'videos/elite-previa.mp4', poster: 'assets/img/trabalhos/elite.jpg', estilo: 'Elite', titulo: '', duracao: '0:54' },
+    { id: 'magnetico', arquivo: 'videos/magnetico.mp4', previa: 'videos/magnetico-previa.mp4', poster: 'assets/img/trabalhos/magnetico.jpg', estilo: 'Magnético', titulo: '', duracao: '0:32' },
+    { id: 'avatar-de-ia', arquivo: 'videos/avatar-de-ia.mp4', previa: 'videos/avatar-de-ia-previa.mp4', poster: 'assets/img/trabalhos/avatar-de-ia.jpg', estilo: 'Avatar de IA', titulo: '', duracao: '1:00' },
+    { id: 'encapsulado', arquivo: 'videos/encapsulado.mp4', previa: 'videos/encapsulado-previa.mp4', poster: 'assets/img/trabalhos/encapsulado.jpg', estilo: 'Encapsulado', titulo: '', duracao: '0:41' }
   ],
 
   /* Estilos: os mesmos nomes das pastas do portfólio da PH no Drive.
